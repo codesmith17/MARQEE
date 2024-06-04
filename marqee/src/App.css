@@ -1,0 +1,119 @@
+/* App.css */
+
+.App {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+}
+
+.nav-button {
+  background-color: #61dafb;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.results-container {
+  padding: 20px;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-message button {
+  background-color: #721c24;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.no-results {
+  color: #6c757d;
+}
+
+.book-list,
+.bookshelf-page ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.book-list li,
+.bookshelf-page li {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.book-list li:hover,
+.bookshelf-page li:hover {
+  transform: scale(1.05);
+}
+
+.book-list li h3,
+.bookshelf-page li h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.book-list li p,
+.bookshelf-page li p {
+  font-size: 14px;
+  color: #555;
+}
+
+.book-list li button,
+.bookshelf-page li button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.book-list li button:hover,
+.bookshelf-page li button:hover {
+  background-color: #cc0000;
+}
+
+.bookshelf-page {
+  padding: 20px;
+}
+
+.bookshelf-page h2 {
+  margin-bottom: 20px;
+}
+
+.bookshelf-page .back-button {
+  background-color: #61dafb;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
