@@ -21,28 +21,44 @@ const App = () => {
   }, [bookshelf]);
 
   const handleSearch = async (searchValue) => {
+    // setSearchTerm(searchValue);
+    // setIsLoading(true);
+    // setError(null);
+    // try {
+    //   const response = await fetch(
+    //     `https://openlibrary.org/search.json?q=${searchValue}&limit=10&page=1`
+    //   );
+    //   if (!response.ok) {
+    //     throw new Error("Network response was not ok");
+    //   }
+    //   const data = await response.json();
+    //   setSearchResults(data.docs);
+    // } catch (error) {
+    //   setError("Error fetching data. Please try again later.");
+    //   console.error("Error fetching data:", error);
+    // } finally {
+    //   setIsLoading(false);
+    // }
+    // };
     setSearchTerm(searchValue);
     setIsLoading(true);
     setError(null);
-
-    try {
-      const response = await fetch(
-        `https://openlibrary.org/search.json?q=${searchValue}&limit=10&page=1`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      setSearchResults(data.docs);
-    } catch (error) {
-      setError("Error fetching data. Please try again later.");
-      console.error("Error fetching data:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    fetch(`https://openlibrary.org/search.json?q=${searchTerm}&limit=10&page=1`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("INTERNAL SERVER ERROR");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        setSearchResults(res.docs);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("INTERNAL SERVER ERROR PLEASE TRY AGAIN LATER");
+      })
+      .finally(() => setIsLoading(false));
   };
-
   const addToBookshelf = (book) => {
     if (!bookshelf.some((b) => b.key === book.key)) {
       setBookshelf([...bookshelf, book]);
